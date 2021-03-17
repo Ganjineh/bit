@@ -953,7 +953,7 @@ class SochainAPI:
     @classmethod
     def broadcast_tx(cls, tx_hex):
         r = requests.post(cls.MAIN_TX_PUSH_API, json={cls.TX_PUSH_PARAM: tx_hex}, timeout=DEFAULT_TIMEOUT)
-        print(r.josn())
+        print(r.json())
         return True if r.status_code == 200 else False
 
 class NetworkAPI:
@@ -993,11 +993,11 @@ class NetworkAPI:
     ]
     BROADCAST_TX_MAIN = [
         SochainAPI.broadcast_tx,
-    #     BlockchairAPI.broadcast_tx,
-    #     BlockstreamAPI.broadcast_tx,
-    #     BitcoreAPI.broadcast_tx,
-    #     SmartbitAPI.broadcast_tx,  # Limit 5/minute
-    #     BlockchainAPI.broadcast_tx,
+        BlockchainAPI.broadcast_tx,
+        BlockstreamAPI.broadcast_tx,
+        BitcoreAPI.broadcast_tx,
+        SmartbitAPI.broadcast_tx,  # Limit 5/minute
+        BlockchairAPI.broadcast_tx,
     ]
 
     GET_BALANCE_TEST = [
