@@ -58,7 +58,7 @@ class BaseKey:
     def __init__(self, wif=None):
         if wif:
             if isinstance(wif, str):
-                private_key_bytes, compressed, version = wif_to_bytes(wif)
+                private_key_bytes, compressed, _ = wif_to_bytes(wif)
                 self._pk = ECPrivateKey(private_key_bytes)
             elif isinstance(wif, ECPrivateKey):
                 self._pk = wif
