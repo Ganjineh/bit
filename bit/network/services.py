@@ -569,14 +569,14 @@ class BitcoreAPI(InsightAPI):
     MAIN_ENDPOINT = 'https://api.bitcore.io/api/BTC/mainnet/'
     MAIN_ADDRESS_API = MAIN_ENDPOINT + 'address/{}'
     MAIN_BALANCE_API = MAIN_ADDRESS_API + '/balance'
-    MAIN_UNSPENT_API = MAIN_ADDRESS_API + '/?unspent=true'
+    MAIN_UNSPENT_API = MAIN_ADDRESS_API + '/?unspent=true&limit=1000'
     MAIN_TX_PUSH_API = MAIN_ENDPOINT + 'tx/send'
     MAIN_TX_API = MAIN_ENDPOINT + 'tx/{}'
     MAIN_TX_AMOUNT_API = MAIN_TX_API
     TEST_ENDPOINT = 'https://api.bitcore.io/api/BTC/testnet/'
     TEST_ADDRESS_API = TEST_ENDPOINT + 'address/{}'
     TEST_BALANCE_API = TEST_ADDRESS_API + '/balance'
-    TEST_UNSPENT_API = TEST_ADDRESS_API + '/?unspent=true'
+    TEST_UNSPENT_API = TEST_ADDRESS_API + '/?unspent=true&limit=1000'
     TEST_TX_PUSH_API = TEST_ENDPOINT + 'tx/send'
     TEST_TX_API = TEST_ENDPOINT + 'tx/{}'
     TEST_TX_AMOUNT_API = TEST_TX_API
