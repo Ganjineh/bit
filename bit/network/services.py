@@ -953,7 +953,6 @@ class SochainAPI:
     @classmethod
     def broadcast_tx(cls, tx_hex):
         r = requests.post(cls.MAIN_TX_PUSH_API, json={cls.TX_PUSH_PARAM: tx_hex}, timeout=DEFAULT_TIMEOUT)
-        print(r.json())
         return True if r.status_code == 200 else False
 
 class NetworkAPI:
