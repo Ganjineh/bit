@@ -319,7 +319,7 @@ def select_coins(target, fee, output_size, min_change, *, absolute_fee=False, co
                 sum(u.vsize for u in selected_coins), len(selected_coins), sum(output_size), len(output_size), fee, any(u.segwit for u in selected_coins)
             )
             estimated_fee = fee if absolute_fee else estimated_fee
-            remaining = sum(u.amount for u in selected_coins) - target - estimated_fee
+            remaining = int(sum(u.amount for u in selected_coins) - target - estimated_fee)
             if remaining >= min_change and (not consolidate or len(unspents) == 0):
                 break
         else:
