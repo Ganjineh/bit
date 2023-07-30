@@ -418,7 +418,10 @@ def sanitize_tx_data(
 
     # Include return address in output count.
     # Calculate output size as a list (including return address).
-    output_size = [len(address_to_scriptpubkey(o[0])) + 9 for o in outputs]
+    try:
+        output_size = [len(address_to_scriptpubkey(o[0])) + 9 for o in outputs]
+    except:
+        output_size = [37]
     output_size.append(len(messages) * (MESSAGE_LIMIT + 9))
     output_size.append(len(address_to_scriptpubkey(leftover)) + 9)
     sum_outputs = sum(out[1] for out in outputs)
@@ -444,7 +447,10 @@ def sanitize_tx_data(
     # Sanity check: If spending from main-/testnet, then all output addresses must also be for main-/testnet.
     for output in outputs:
         dest, amount = output
-        vs = get_version(dest)
+        try:
+            vs = get_version(dest)
+        except:
+            vs = version
         if vs and vs != version:
             raise ValueError('Cannot send to ' + vs + 'net address when spending from a ' + version + 'net address.')
 
